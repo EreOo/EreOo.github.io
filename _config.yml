@@ -1,6 +1,6 @@
 permalink: /:year:month:day/:title
-url: https://ereoo.github.io/
-baseurl: https://ereoo.github.io/
+url: https://ereoo.github.io
+baseurl: /me
 
 # variables
 name: QA for People
