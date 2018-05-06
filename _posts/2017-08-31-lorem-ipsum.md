@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "First"
 tags: tag1 tag2 tag3 tag4
 ---

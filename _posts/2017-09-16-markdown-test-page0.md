@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Markdown Test Page"
 tags: tag1 tag3
 ---

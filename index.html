@@ -1,8 +1,8 @@
 ---
-layout: default
+layout: home
+titles:
+  en: Blog
+  zh: 博客
+  zh-Hans: 博客
+  zh-Hant: 博客
 ---
-<ul>
-	{% for post in site.posts %}
-	<li><a href="{{  post.url }}" title="{{ post.title }}"><img src="/assets/img/file.ico" title="{{ post.title }}" />{{ post.title }}</a></li>
-	{% endfor %}
-</ul>
