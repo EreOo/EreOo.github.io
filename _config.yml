@@ -21,7 +21,7 @@ url: https://ereoo.github.io/
 baseurl: /
 title: QA For People
 description: > # this means to ignore newlines until "Language & timezone"
-  Someone's Blog
+  Blog about automation testing by Vladimir Shekhavtsov.
 
 
 ## => Language and Timezone
@@ -35,9 +35,9 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 author:
   name: Vladimir Shekhavtsov
   email: Vladimircomment1995@gmail.com # your Email address e.g. someone@site.com
-  facebook: # your Facebook username
+  facebook: cosmosvnutri
   twitter: # your Twitter username
-  github: # your GitHub username
+  github: EreOo
   linkedin: # your Linkedin username
   googleplus: # your Google+ username
   weibo: # your Weibo username
