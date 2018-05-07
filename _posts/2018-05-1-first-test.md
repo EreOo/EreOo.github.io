@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Первый автоматизированный тест"
+title: "Автоматизированный тест с Selenide и TestNG"
 tags: Java Selenide Junior Web
 ---
 
@@ -62,9 +62,9 @@ public class OurFirstTest {
 -  public void checkNoSearchResult() - открываем сайт, вводим в поле поиска qweqwe, нажимаем найти, проверяем ответ сайта.
 -  private void close() - закрываем драйвер.
 
-
-Без getWebDriver().close() на тестовой машине (Window 10, i7 7700k, 16gb) после прогона тестов была замечена загрузка CPU на 100%!
-macOS отреагировал на отсутсвие методf закрытия более лояльно. Но считаю, что лучше прописывать driver.close().
+В Selenide есть shutdown driver метод, но на тестовой машине (Windows 10, i7 7700k, 16gb) было замечено, что
+без getWebDriver().close()  после прогона тестов загрузка CPU 100% из за незакрытых браузеров.
+macOS отреагировал на отсутсвие метода закрытия более лояльно, но считаю, что лучше прописать driver.close().
 {:.warning}
 
 Исходный код можно найти тут: [GitHub project: WEB-QA.][TEASY] <br>Branch: *bad_simple_test*
