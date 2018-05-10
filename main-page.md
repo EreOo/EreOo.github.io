@@ -6,13 +6,13 @@ tags:
 <div id="top" class="page" role="document">
      <header role="banner">
        <h1>Main Page</h1>
-       <p>This is fist test page "MainPage". Second test page is "TextPage". This is a test page filled with common HTML elements. Feel free to practice create your auto-tests.</p>
+       <p class="about-text" id="about">This is fist test page "MainPage". Second test page is "SecondPage". This is a test page filled with common HTML elements. Feel free to practice create your auto-tests.</p>
      </header>
 
      <fieldset id="redirect__action">
        <legend>Redirect button</legend>
        <p>
-         <input type="button" value="Redirect to TextPage" onclick="window.location.href='../text-page'">
+         <input id="go_second" type="button" value="Redirect to TextPage" onclick="window.location.href='../Second-page'">
        </p>
      </fieldset>
 
@@ -81,30 +81,30 @@ tags:
        <section id="forms">
          <header><h1>Form elements</h1></header>
          <form>
-           <fieldset id="forms__input">
+           <fieldset id="forms_input">
              <legend>Input fields</legend>
              <p>
-               <label for="input__text">Text Input</label>
-               <input id="input__text" type="text" placeholder="Text Input">
+               <label class="label_name" for="input__text">Name</label>
+               <input id="input__name" type="text" placeholder="Name Input">
              </p>
              <p>
-               <label for="input__password">Password</label>
+               <label class="label_password" for="input__password">Password</label>
                <input id="input__password" type="password" placeholder="Type your Password">
              </p>
              <p>
-               <label for="input__webaddress">Web Address</label>
+               <label class="label_webadress" for="input__webaddress">Web Address</label>
                <input id="input__webaddress" type="url" placeholder="http://yoursite.com">
              </p>
              <p>
-               <label for="input__emailaddress">Email Address</label>
+               <label class="label_email" for="input__emailaddress">Email Address</label>
                <input id="input__emailaddress" type="email" placeholder="name@email.com">
              </p>
              <p>
-               <label for="input__phone">Phone Number</label>
+               <label class="label_phone" for="input__phone">Phone Number</label>
                <input id="input__phone" type="tel" placeholder="(999) 999-9999">
              </p>
              <p>
-               <label for="input__search">Search</label>
+               <label class="label_search" for="input__search">Search</label>
                <input id="input__search" type="search" placeholder="Enter Search Term">
              </p>
              <p>

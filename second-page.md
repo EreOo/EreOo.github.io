@@ -6,14 +6,14 @@ tags:
 <body>
 <div id="top" class="page" role="document">
   <header role="banner">
-    <h1>Text Page</h1>
-    <p>This is second test page "TextPage". First test page is "MainPage". This is a test page filled with common HTML elements. Feel free to practice create your auto-tests.</p>
+    <h1>Second Page</h1>
+    <p id="about">This is second test page "SecondPage". First test page is "MainPage". This is a test page filled with common HTML elements. Feel free to practice create your auto-tests.</p>
   </header>
 
   <fieldset id="redirect__action">
     <legend>Redirect button</legend>
     <p>
-      <input type="button" value="Redirect to MainPage" onclick="window.location.href='../main-page'">
+      <input id="go_main" type="button" value="Redirect to MainPage" onclick="window.location.href='../main-page'">
     </p>
   </fieldset>
 
