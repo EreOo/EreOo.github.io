@@ -12,7 +12,7 @@ tags:
      <fieldset id="redirect__action">
        <legend>Redirect button</legend>
        <p>
-         <input id="go_second" type="button" value="Redirect to TextPage" onclick="window.location.href='../Second-page'">
+         <input id="go_second" type="button" value="Redirect to TextPage" onclick="window.location.href='../second-page'">
        </p>
      </fieldset>
 
