@@ -10,23 +10,22 @@ tags: Java Selenide Junior Web
 {% highlight Java %}
 public class OurFirstTest {
 
-    @BeforeTest
-    private void settings() {
-        Configuration.browser = "chrome";
-    }
+  @BeforeTest
+  private void settings() {
+      Configuration.browser = "chrome";
+  }
 
-    @Test
-    public void checkNoSearchResult() {
-        open("https://www.dns-shop.ru/");
-        $(By.cssSelector("#header-search > div > form > div > input")).setValue("qweqwe");
-        $(By.cssSelector("#header-search > div > form > div > span.input-group-btn > button")).click();
-        $(By.id("empty-search-results")).shouldHave(text("К сожалению, по запросу «qweqwe» мы ничего не смогли найти."));
-    }
+  @Test
+  public void checkSecondPageAboutText() {
+      open("https://ereoo.github.io/main-page");
+      $(By.id("go_second")).click();
+      $(By.id("about")).shouldHave(text("This is second test page \"SecondPage\". First test page is \"MainPage\". This is a test page filled with common HTML elements. Feel free to practice create your auto-tests."));
+  }
 
-    @AfterTest
-    private void close() {
-        getWebDriver().close();
-    }
+  @AfterTest
+  private void close() {
+      getWebDriver().close();
+  }
 }
 {% endhighlight %}
 <!--more-->
@@ -46,32 +45,25 @@ public class OurFirstTest {
 ## Решение проблемы.
 ### Page object.
 Page класс описывает страницу сайта. В проекте их столько же сколько и страниц на сайте, который тестируем.
-В данном примере создадим два класса MainPage и SearchResultPage.
+В данном примере создадим два класса MainPage и SecondPage.
 
 {% highlight Java %}
 public class MainPage {
-      private static final By SEARCH_FIELD = By.cssSelector("#header-search > div > form > div > input");
-      private static final By SEARCH_BUTTON = By.cssSelector("#header-search > div > form > div > span.input-group-btn > button");
+    private static final By SECOND_PAGE_BUTTON_LOCATOR = By.id("go_second");
 
-      public MainPage inputSearch(String query) {
-          $(SEARCH_FIELD).setValue(query);
-          return this;
-      }
-
-      public SearchResultPage clickSearchButton() {
-          $(SEARCH_BUTTON).click();
-          return new SearchResultPage();
-      }
+    public SecondPage clickRedirectToSecondPageButton() {
+        $(SECOND_PAGE_BUTTON_LOCATOR).click();
+        return new SecondPage();
+    }
 }
 {% endhighlight %}
 
 {% highlight Java %}
-public class SearchResultPage {
-    private static final By EMPTY_RESULT = By.id("empty-search-results");
+public class SecondPage {
+    private static final By ABOUT_TEXT_LOCATOR = By.id("about");
 
-    public SearchResultPage checkNoSearchResultsMessage(String query) {
-        String noResultText = String.format("К сожалению, по запросу «%s» мы ничего не смогли найти.", query);
-        $(EMPTY_RESULT).shouldHave(text(noResultText));
+    public SecondPage checkAboutText(String aboutText) {
+        $(ABOUT_TEXT_LOCATOR).shouldHave(text(aboutText));
         return this;
     }
 }
@@ -88,7 +80,7 @@ public class SearchResultPage {
  * Почему мы в методах возвращаем ее или другую?
 
  Ответ:
-  * Благодаря этому мы сможем получать все методы для данной страницы и не сможем обратиться к методу и элементу, которые находят на другой странице сайта. Если метод переводит нас на другую страницу, он возвращает новый объект, как пример - метод clickSearchButton().
+  * Благодаря этому мы сможем получать все методы для данной страницы и не сможем обратиться к методу и элементу, которые находят на другой странице сайта. Если метод переводит нас на другую страницу, он возвращает новый объект, как пример - метод clickRedirectToSecondPageButton().
 
   Среда разработки будет помогать, показывая после '.' (точки) возможные методы для нашей Page. Написание тестов становится похожим на конструктор,
   где инженер из методов собирает готовый тест.
@@ -105,17 +97,16 @@ public class SearchResultPage {
 
 {% highlight Java %}
 public class BaseTest {
-
-    private static final String SHOP_SITE = "https://www.dns-shop.ru/";
-
-    private void selectChrome() {
-        Configuration.browser = "chrome";
-    }
+    private static final String URL_SITE = "https://ereoo.github.io/main-page";
 
     public MainPage openSite() {
         selectChrome();
-        open(SHOP_SITE);
+        open(URL_SITE);
         return new MainPage();
+    }
+
+    private void selectChrome() {
+        Configuration.browser = "chrome";
     }
 
     @AfterTest
@@ -126,7 +117,7 @@ public class BaseTest {
 {% endhighlight %}
 
 Рассмотрим класс:
-- SHOP_SITE - константа хронящяя url нашего сайта.
+- URL_SITE - константа хронящяя url нашего сайта.
 - selectChrome() - метод устанавливающий браузер для запуска
 - openSite() - вызывает метод selectChrome, после открывает сайт и возвращает MainPage. Что бы мы смогли сразу работать с методами главной страницы.
 - close() - будет закрывать драйвер после каждого теста.
@@ -139,25 +130,23 @@ public class BaseTest {
 3. Заново казывать сайт.
 - Указываем сайт один раз в константе.
 
-##Тест после доработок.
+## Тест после доработок.
 {% highlight Java %}
 public class NoSearchResults extends BaseTest {
-    private static final String NO_RESULTS_QUERY = "qweqwe";
+    private static final String ABOUT_TEXT = "This is second test page \"SecondPage\". First test page is \"MainPage\". This is a test page filled with common HTML elements. Feel free to practice create your auto-tests.";
 
     @Test
-    public void noSearchResults() {
+    public void checkSecondPageAboutText() {
         openSite()
-                .inputSearch(NO_RESULTS_QUERY)
-                .clickSearchButton()
-                .checkNoSearchResultsMessage(NO_RESULTS_QUERY);
+                .clickRedirectToSecondPageButton()
+                .checkAboutText(ABOUT_TEXT);
     }
 }
 {% endhighlight %}
 
 Рассмотрим тест:
 - extends BaseTest - каждый новый тест нужно наследовать от BaseTest. Мы наследуем метод openSite и close (который будет вызываться автоматически благодаря аннотации).
--   openSite()
-          .inputSearch(NO_RESULTS_QUERY) - открываем сайт и получаем после '.' метод MainPage и дальше строим наш тест.
+- openSite() - открываем сайт и получаем после '.' методы с MainPage и дальше строим наш тест.
 
 
 ### Итоги.

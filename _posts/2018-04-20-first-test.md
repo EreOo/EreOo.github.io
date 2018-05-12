@@ -27,7 +27,7 @@ tags: Java Selenide Junior Web
 <!--more-->
 ## Код теста.
 
-В src → test → java создаем class OurFirstTest. Это и будет наш тест, который проверяет ответ сайта на невалидный запрос поиска.
+В src → test → java создаем class OurFirstTest. Это и будет наш тест, который кликает на кнопку, переходит на другую страницу и проверяет текст.
 
 {% highlight Java %}
 public class OurFirstTest {
