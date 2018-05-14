@@ -17,19 +17,19 @@ TestNG позволяет создать test suite, указать тесты �
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="implemented" verbose="1" parallel="tests" thread-count="3">
 
-    <test name="Catalog_Menu">
+    <test name="AboutMainPageText">
         <classes>
-            <class name="com.qaforpeople.functionality.tests.CheckCatalogMenu"/>
+            <class name="com.qaforpeople.functionality.tests.AboutMainPageText"/>
         </classes>
     </test>
-    <test name="No_Search_Results">
+    <test name="InputFieldsText">
         <classes>
-            <class name="com.qaforpeople.functionality.tests.NoSearchResults"/>
+            <class name="com.qaforpeople.functionality.tests.InputFieldsText"/>
         </classes>
     </test>
-    <test name="Empty_Cart_Link">
+    <test name="AboutSecondPageText">
         <classes>
-            <class name="com.qaforpeople.functionality.tests.CheckEmptyCartLink"/>
+            <class name="com.qaforpeople.functionality.tests.AboutSecondPageText"/>
         </classes>
     </test>
 </suite>
@@ -38,9 +38,9 @@ TestNG позволяет создать test suite, указать тесты �
  thread-count="3" - количество потоков не должно быть больше, чем тестов  (это не имеет смысла) и так же большое количество может перегрузить машину.
  {:.info}
 
-Если проект в __IntelliJ IDEA__ можно нажать на файл xml правой кнопкой мыши и запустить локально. Поднимется три браузера. Прогон занимает в среднем 12 секунд. В один поток - 32 секунды!
+Если проект в __IntelliJ IDEA__ можно нажать на файл xml правой кнопкой мыши и запустить локально. Поднимется три браузера.
 
-Исходный код можно найти тут: [GitHub project: WEB-QA.][TEASY] <br>Branch: __testng-xml__
+Исходный код можно найти тут: [GitHub project: WEB-QA.][TEASY] 
 {:.info}
 
 [TEASY]:https://github.com/EreOo/WEB-QA "WEB-QA project"
