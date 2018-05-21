@@ -3,7 +3,7 @@ layout: post
 title: "Jenkins в контейнере"
 tags: Jenkins Docker
 ---
-![My Image](assets\images\jenkins.png)
+![Jenkins](\assets\images\jenkins.jpg)
 ## Запускаем Jenkins.
 Jenkins мощный инструмент, с его помощью выстраивают процесс Continuous Integration (CI).
 Docker позволяет "упаковать" приложение со всем его окружением и зависимостями в контейнер.
